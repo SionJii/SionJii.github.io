@@ -14,7 +14,7 @@ const today = new Date();
 				></path></svg
 			>
 		</a>
-		<span class="icon-only" title="Discord: sionji_">
+		<span class="icon-only" data-tooltip="Discord: sionji_" tabindex="0">
 			<span class="sr-only">Discord: sionji_</span>
 			<svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
 				><path
@@ -46,5 +46,31 @@ const today = new Date();
 	}
 	.social-links a:hover {
 		color: rgb(var(--gray-dark));
+	}
+	.social-links .icon-only {
+		position: relative;
+		cursor: default;
+	}
+	.social-links .icon-only::after {
+		content: attr(data-tooltip);
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		margin-bottom: 0.4em;
+		padding: 0.3em 0.6em;
+		background: rgb(var(--gray-dark));
+		color: white;
+		font-size: 0.75rem;
+		white-space: nowrap;
+		border-radius: 4px;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.15s ease;
+		z-index: 10;
+	}
+	.social-links .icon-only:hover::after,
+	.social-links .icon-only:focus-visible::after {
+		opacity: 1;
 	}
 </style>
