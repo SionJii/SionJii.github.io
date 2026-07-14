@@ -15,7 +15,7 @@ heroImage: '../../assets/blog-placeholder-1.jpg'
 subscribe(claude)
 tell(claude).writeCode()
 
-while(satisfied):
+while(!satisfied):
     tell(claude).fixCode()
     tell(claude).writeCode()
 
