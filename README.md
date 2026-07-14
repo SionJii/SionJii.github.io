@@ -1,77 +1,40 @@
-# Astro Starter Kit: Blog
+# SionJi's Blog
+
+개발 기록과 이런저런 생각들을 남기는 개인 블로그입니다.
+
+🔗 https://sionjii.github.io
+
+## 기술 스택
+
+- [Astro](https://astro.build)
+- GitHub Pages + GitHub Actions로 자동 배포 (`main` 브랜치에 push하면 자동 반영)
+
+## 로컬 개발
 
 ```sh
-npm create astro@latest -- --template blog
+npm install
+npm run dev       # localhost:4321
 ```
 
-<!-- ASTRO:REMOVE:START -->
+| Command           | Action                        |
+| :----------------- | :----------------------------- |
+| `npm install`       | 의존성 설치                    |
+| `npm run dev`       | 로컬 개발 서버 실행            |
+| `npm run build`     | 프로덕션 빌드 (`./dist/`)      |
+| `npm run preview`   | 빌드 결과 로컬 미리보기        |
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
-
-<!-- ASTRO:REMOVE:END -->
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-<!-- ASTRO:REMOVE:START -->
-
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
-
-<!-- ASTRO:REMOVE:END -->
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 구조
 
 ```text
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── assets/
+│   ├── components/
+│   ├── content/blog/   # 글 (Markdown/MDX)
+│   ├── layouts/
+│   └── pages/
 ├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+└── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+새 글은 `src/content/blog/`에 Markdown 파일을 추가하면 됩니다.
