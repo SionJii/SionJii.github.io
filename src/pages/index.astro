@@ -1,8 +1,14 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
 ---
 
 <!doctype html>
@@ -15,8 +21,67 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<main>
 			<h1>{SITE_TITLE}</h1>
 			<p>{SITE_DESCRIPTION}</p>
-			<p>글 목록은 <a href="/blog">Blog</a> 페이지에서 확인할 수 있습니다.</p>
+
+			<h2>최근 글</h2>
+			<ul class="recent-posts">
+				{
+					posts.map((post) => (
+						<li>
+							<a class="post-card" href={`/blog/${post.id}/`}>
+								<span class="title">{post.data.title}</span>
+								<p class="date">
+									<FormattedDate date={post.data.pubDate} />
+								</p>
+								<p class="description">{post.data.description}</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+			<p><a href="/blog">전체 글 보기 →</a></p>
 		</main>
 		<Footer />
 	</body>
 </html>
+<style>
+	.recent-posts {
+		list-style: none;
+		padding: 0;
+		margin: 1.5em 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+	.recent-posts li {
+		border-radius: 12px;
+		box-shadow: 0 1px 3px rgba(var(--gray), 20%);
+		transition: box-shadow 0.2s ease;
+	}
+	.recent-posts li:hover {
+		box-shadow: 0 4px 12px rgba(var(--gray), 25%);
+	}
+	.post-card {
+		display: block;
+		padding: 1.25em 1.5em;
+		border-radius: 12px;
+		background: rgb(var(--surface));
+		text-decoration: none;
+		color: rgb(var(--black));
+	}
+	.post-card .title {
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	.recent-posts li:hover .title {
+		color: var(--accent);
+	}
+	.post-card .date {
+		margin: 0.35em 0;
+		color: rgb(var(--gray));
+		font-size: 0.9em;
+	}
+	.post-card .description {
+		margin: 0.5em 0 0;
+		color: rgb(var(--gray-dark));
+	}
+</style>
