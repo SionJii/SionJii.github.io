@@ -54,11 +54,14 @@ const posts = (await getCollection('blog'))
 	}
 	.recent-posts li {
 		border-radius: 12px;
-		box-shadow: 0 1px 3px rgba(var(--gray), 20%);
-		transition: box-shadow 0.2s ease;
+		box-shadow: var(--shadow-md);
+		transition:
+			box-shadow 0.2s ease,
+			transform 0.2s ease;
 	}
 	.recent-posts li:hover {
-		box-shadow: 0 4px 12px rgba(var(--gray), 25%);
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-4px);
 	}
 	.post-card {
 		display: block;
